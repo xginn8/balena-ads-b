@@ -10,9 +10,9 @@ RUN apt-get update && \
 	apt-get install -y wget && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Golang is installed to identify the correct architecture to donwload.
+# Golang is installed to identify the correct architecture to download.
 
-RUN wget --quiet -O traefik.tar.gz "https://github.com/containous/traefik/releases/download/v${TRAEFIK_VERSION}/traefik_v${TRAEFIK_VERSION}_linux_${TRAEFIK_ARCH}.tar.gz"; 
+RUN wget --quiet -O traefik.tar.gz "https://github.com/containous/traefik/releases/download/v${TRAEFIK_VERSION}/traefik_v${TRAEFIK_VERSION}_linux_${TRAEFIK_ARCH}.tar.gz";
 
 RUN tar -C /usr/bin/ -zxvf traefik.tar.gz && rm traefik.tar.gz
 
@@ -24,4 +24,3 @@ COPY start.sh /
 RUN chmod +x /start.sh
 
 ENTRYPOINT ["/start.sh"]
-
